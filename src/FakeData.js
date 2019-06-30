@@ -1,0 +1,17 @@
+export const data = [
+    {logDate: Date.now(), logFrequency: 12000, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 12020, logSignalStrength: 3},
+    {logDate: Date.now(), logFrequency: 12030, logSignalStrength: 2},
+    {logDate: Date.now(), logFrequency: 12040, logSignalStrength: 1},
+    {logDate: Date.now(), logFrequency: 12050, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 12060, logSignalStrength: 4},
+    {logDate: Date.now(), logFrequency: 12070, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 12030, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 12011, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 13000, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 14000, logSignalStrength: 4},
+    {logDate: Date.now(), logFrequency: 15000, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 16000, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 17000, logSignalStrength: 5},
+    {logDate: Date.now(), logFrequency: 10200, logSignalStrength: 5},
+]
