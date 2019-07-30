@@ -7,18 +7,13 @@ router.get('/', async (req, res, next) => {
   let conn
   try {
     conn = await pool.getConnection();
-    const rows = await conn.query("SELECT * FROM radioshow");
+    const rows = await conn.query("SELECT * FROM station");
     res.send(JSON.stringify(rows))
   } catch (err) {
   	throw err;
   } finally {
 	  if (conn) return conn.end();
   }
-
- 	// res.locals.pool.query('SELECT * from radioshow', function (error, results, fields) {
-	// 	if(error) throw error;
-	// 	res.send(JSON.stringify(results));
-	// });
 });
 
 module.exports = router;
