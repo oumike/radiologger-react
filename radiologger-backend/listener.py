@@ -1,5 +1,16 @@
-from Flask import Flask, request
-from flask_restful import Resource, Api
-from sqlalchemy import create_engine
-from json import dumps
-from flask.ext.jsonpify import jsonify
+from flask import Flask, jsonify
+from rlb.ReferenceUpdater import ReferenceUpdater
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "there be nothing here but dragons and smelly feet"
+
+@app.route('/updatestations')
+def updatestations():
+    ru = ReferenceUpdater()
+    return jsonify({'updated': 'true'})
+
+if __name__ == '__main__':
+    app.run(debug=True)
