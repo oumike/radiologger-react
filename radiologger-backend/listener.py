@@ -10,6 +10,7 @@ def index():
 @app.route('/updatestations')
 def updatestations():
     ru = ReferenceUpdater()
+    ru.update_database()
     return jsonify({'updated': 'true'})
 
 if __name__ == '__main__':
