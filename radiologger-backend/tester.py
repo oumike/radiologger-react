@@ -2,4 +2,5 @@ from rlb.ReferenceUpdater import ReferenceUpdater
 
 ru = ReferenceUpdater()
 
-ru.update_database()
+# ru.build_schedule_table()
+ru.build_reference_db()
