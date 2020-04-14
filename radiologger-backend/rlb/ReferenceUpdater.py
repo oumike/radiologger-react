@@ -7,7 +7,10 @@ class ReferenceUpdater:
     db = ''
 
     def __init__(self):
-        self.ebi_file = 'http://www.eibispace.de/dx/sked-b19.csv'
+
+        # a is for Summer, b is for Winter, numbers following are for year
+        # implement logic for that
+        self.ebi_file = 'http://www.eibispace.de/dx/sked-a20.csv'
         self.db = TinyDB('reference.json')
 
     def build_schedule_table(self):
@@ -42,6 +45,9 @@ class ReferenceUpdater:
         for schedule_row in schedule_table.all():
             current_station_id = -1
             if schedule_row['station'] not in stations_box:
+                # print('station_index: ' + str(station_index) + ' / station name: ' + schedule_row['station'])
+                if station_index % 10 == 0:
+                    print('statoin_index: ' + str(station_index))
                 station_table.insert({'id': station_index, 'name': schedule_row['station']})
                 current_station_id = station_index
                 station_index = station_index + 1

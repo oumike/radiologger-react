@@ -1,17 +1,19 @@
-from flask import Flask, jsonify
-from rlb.ReferenceUpdater import ReferenceUpdater
+from flask_restplus import Api
+from flask import Flask
+from rlb.Station import api as station_api
+from werkzeug.contrib.fixers import ProxyFix
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
-@app.route('/')
-def index():
-    return "there be nothing here but dragons and smelly feet"
+api = Api(
+    app,
+    title='Radio Logger API',
+    version='0.1',
+    description='Back-end for a companion to shortwave DX listening.'
+)
 
-@app.route('/updatestations')
-def updatestations():
-    ru = ReferenceUpdater()
-    ru.update_database()
-    return jsonify({'updated': 'true'})
+api.add_namespace(station_api)
 
 if __name__ == '__main__':
     app.run(debug=True)
