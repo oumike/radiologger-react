@@ -29,7 +29,7 @@ class ReferenceUpdater:
                     # 17.2;0730-0830;24Dec;S;SAQ Grimeton;-CW;Eu;gr;6;1312;2412
                     # 18.2;0000-2400;;IND;VTX Indian Navy;;SAs;v;1;;
                     schedule_table.insert({'frequency': sched[0], 'time': sched[1], 'source': sched[3], 'station': sched[4], 'target': sched[6]})
-                    print(str(i) + ' rows inserted')
+                    if i % 100 == 0: print(str(i) + ' rows inserted')
                 i = i + 1
 
     def build_reference_db(self):
@@ -45,9 +45,9 @@ class ReferenceUpdater:
         for schedule_row in schedule_table.all():
             current_station_id = -1
             if schedule_row['station'] not in stations_box:
-                # print('station_index: ' + str(station_index) + ' / station name: ' + schedule_row['station'])
-                if station_index % 10 == 0:
-                    print('statoin_index: ' + str(station_index))
+
+                if station_index % 10 == 0: print('station index: ' + str(station_index))
+                    
                 station_table.insert({'id': station_index, 'name': schedule_row['station']})
                 current_station_id = station_index
                 station_index = station_index + 1
@@ -63,5 +63,5 @@ class ReferenceUpdater:
                 sourcedestination_box.append(schedule_row['source'])
             else:
                 current_source_id = sourcedestination_box.index(schedule_row['source'])
-    # def get_stations(self, criteria):
-    #     schedule_table = self.db.table('schedule_table')
+    
+    

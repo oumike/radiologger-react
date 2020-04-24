@@ -1,6 +1,7 @@
 from flask_restplus import Api
 from flask import Flask
 from rlb.Station import api as station_api
+from rlb.SourceDestination import api as sourcedestination_api
 from werkzeug.contrib.fixers import ProxyFix
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ api = Api(
 )
 
 api.add_namespace(station_api)
+api.add_namespace(sourcedestination_api)
 
 if __name__ == '__main__':
     app.run(debug=True)
