@@ -45,7 +45,6 @@ class ReferenceUpdater:
         for schedule_row in schedule_table.all():
             current_station_id = -1
             if schedule_row['station'] not in stations_box:
-
                 if station_index % 10 == 0: print('station index: ' + str(station_index))
                     
                 station_table.insert({'id': station_index, 'name': schedule_row['station']})
@@ -63,5 +62,4 @@ class ReferenceUpdater:
                 sourcedestination_box.append(schedule_row['source'])
             else:
                 current_source_id = sourcedestination_box.index(schedule_row['source'])
-    
     
