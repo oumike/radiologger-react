@@ -36,10 +36,13 @@ class ReferenceUpdater:
         schedule_table = self.db.table('schedule_table')
         self.db.purge_table('stations') # DO we need to purge this?
         self.db.purge_table('sourcedestination') # Do we need to purge this? 
+        self.db.purge_table('schedule')
         station_index = 0
         sourcedestination_index = 0
+        schedule_index = 0
         station_table = self.db.table('stations')
         sourcedestination_table = self.db.table('sourcedestination')
+        schedule_table = self.db.table('schedule')
         stations_box = []
         sourcedestination_box = []
         for schedule_row in schedule_table.all():
@@ -62,4 +65,10 @@ class ReferenceUpdater:
                 sourcedestination_box.append(schedule_row['source'])
             else:
                 current_source_id = sourcedestination_box.index(schedule_row['source'])
+            
+            schedule_table.insert({'id': schedule_index, 'station_id': current_station_id, 'source_id': current_source_id, 'frequency': '', 'start_time':'', 'end_time':''})
+            schedule_index = schedule_index + 1
+
+
+            
     
